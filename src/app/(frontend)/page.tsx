@@ -8,11 +8,12 @@ import { ProductSection } from '@/components/ProductSection'
 import { getPayload } from 'payload'
 import config from '@/payload.config'
 
+// Force dynamic rendering - disable static generation
 export const dynamic = 'force-dynamic'
 export const revalidate = 0
 
 export default async function Page() {
-  let products = []
+  let products = undefined
 
   try {
     const payload = await getPayload({ config })
@@ -38,15 +39,15 @@ export default async function Page() {
       href: `/products/${product.slug}`,
     }))
   } catch (error) {
-    console.error('Error fetching products:', error)
-    // Fallback to empty array, ProductSection will use default data
+    console.error('Failed to fetch products:', error)
+    // Continue with undefined products - akan pakai fallback data
   }
 
   return (
     <main>
       <Hero />
       <HeroTwo />
-      <ProductSection products={products.length > 0 ? products : undefined} />
+      <ProductSection products={products} />
       <Bestseller />
       <CtaCard />
       <Footer />
