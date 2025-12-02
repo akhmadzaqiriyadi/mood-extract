@@ -21,7 +21,9 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  serverURL: process.env.NEXT_PUBLIC_SERVER_URL,
+  cors: [process.env.NEXT_PUBLIC_SERVER_URL || ''].filter(Boolean),
+  csrf: [process.env.NEXT_PUBLIC_SERVER_URL || ''].filter(Boolean),
+  serverURL: process.env.NEXT_PUBLIC_SERVER_URL || '',
   collections: [Users, Media, Products],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
@@ -40,7 +42,7 @@ export default buildConfig({
       collections: {
         media: true,
       },
-      token: process.env.BLOB_READ_WRITE_TOKEN,
+      token: process.env.BLOB_READ_WRITE_TOKEN || '',
     }),
     // storage-adapter-placeholder
   ],
