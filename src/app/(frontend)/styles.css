@@ -1,0 +1,297 @@
+@import "tailwindcss";
+
+/* PP Neue Montreal Font Family */
+@font-face {
+  font-family: 'PP Neue Montreal';
+  src: url('/fonts/ppneuemontreal-book.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PP Neue Montreal';
+  src: url('/fonts/ppneuemontreal-medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PP Neue Montreal';
+  src: url('/fonts/ppneuemontreal-bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PP Neue Montreal';
+  src: url('/fonts/ppneuemontreal-italic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PP Neue Montreal';
+  src: url('/fonts/ppneuemontreal-semibolditalic.otf') format('opentype');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Recoleta Font for Headings */
+@font-face {
+  font-family: 'Recoleta';
+  src: url('/fonts/Recoleta-RegularDEMO.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --font-family-sans: 'PP Neue Montreal', system-ui, -apple-system, sans-serif;
+  --font-family-mono: 'Roboto Mono', monospace;
+  --font-family-heading: 'Recoleta', serif;
+}
+
+@layer base {
+  :root {
+    --font-mono: 'Roboto Mono', monospace;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-size: 18px;
+    line-height: 32px;
+    background: rgb(0, 0, 0);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  html,
+  body,
+  #app {
+    height: 100%;
+  }
+
+  body {
+    font-family: 'PP Neue Montreal', system-ui, -apple-system, sans-serif;
+    font-size: 18px;
+    line-height: 32px;
+    margin: 0;
+    color: rgb(255, 255, 255);
+
+    @media (max-width: 1024px) {
+      font-size: 15px;
+      line-height: 24px;
+    }
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  p {
+    margin: 24px 0;
+
+    @media (max-width: 1024px) {
+      margin: calc(var(--base) * 0.75) 0;
+    }
+  }
+
+  a {
+    color: currentColor;
+
+    &:focus {
+      opacity: 0.8;
+      outline: none;
+    }
+
+    &:active {
+      opacity: 0.7;
+      outline: none;
+    }
+  }
+
+  svg {
+    vertical-align: middle;
+  }
+}
+
+@layer components {
+  .home {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    padding: 45px;
+    max-width: 1024px;
+    margin: 0 auto;
+    overflow: hidden;
+
+    @media (max-width: 400px) {
+      padding: 24px;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex-grow: 1;
+
+      h1 {
+        text-align: center;
+      }
+    }
+
+    .links {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      a {
+        text-decoration: none;
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+      }
+
+      .admin {
+        color: rgb(0, 0, 0);
+        background: rgb(255, 255, 255);
+        border: 1px solid rgb(0, 0, 0);
+      }
+
+      .docs {
+        color: rgb(255, 255, 255);
+        background: rgb(0, 0, 0);
+        border: 1px solid rgb(255, 255, 255);
+      }
+    }
+
+    .footer {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      @media (max-width: 1024px) {
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      .codeLink {
+        text-decoration: none;
+        padding: 0 0.5rem;
+        background: rgb(60, 60, 60);
+        border-radius: 4px;
+      }
+    }
+  }
+
+  /* Custom Heading Styles with Amber Gradient */
+  .heading-hero {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-wider leading-tight;
+    font-family: 'Recoleta', serif;
+    background: linear-gradient(90deg, #8C6A03 0%, #C99700 25%, #FFD700 50%, #C99700 75%, #8C6A03 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% auto;
+  }
+
+  .heading-xl {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold tracking-wider leading-tight;
+    font-family: 'Recoleta', serif;
+    background: linear-gradient(90deg, #8C6A03 0%, #C99700 25%, #FFD700 50%, #C99700 75%, #8C6A03 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% auto;
+  }
+
+  .heading-lg {
+    @apply text-2xl md:text-3xl lg:text-4xl font-bold tracking-wider leading-tight;
+    font-family: 'Recoleta', serif;
+    background: linear-gradient(90deg, #8C6A03 0%, #C99700 25%, #FFD700 50%, #C99700 75%, #8C6A03 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .heading-md {
+    @apply text-xl md:text-2xl lg:text-3xl font-bold tracking-wider leading-tight;
+    font-family: 'Recoleta', serif;
+    background: linear-gradient(90deg, #8C6A03 0%, #C99700 25%, #FFD700 50%, #C99700 75%, #8C6A03 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Amber text without gradient - solid color option */
+  .heading-amber {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-wider leading-tight text-amber-400;
+    font-family: 'Recoleta', serif;
+  }
+
+  .heading-amber-xl {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold tracking-wider leading-tight text-amber-400;
+    font-family: 'Recoleta', serif;
+  }
+
+  .heading-amber-lg {
+    @apply text-2xl md:text-3xl lg:text-4xl font-bold tracking-wider leading-tight text-amber-400;
+    font-family: 'Recoleta', serif;
+  }
+
+  .heading-amber-md {
+    @apply text-xl md:text-2xl lg:text-3xl font-bold tracking-wider leading-tight text-amber-400;
+    font-family: 'Recoleta', serif;
+  }
+
+  /* Custom Button with Vertical Gradient */
+  .btn-gradient-amber {
+    @apply inline-block text-white font-semibold px-8 py-3 rounded whitespace-nowrap transition-all duration-200;
+    background: linear-gradient(180deg, #8C6A03 0%, #C99700 22%, #FFB800 50%, #C99700 75%, #8C6A03 100%);
+    box-shadow: 0 4px 12px rgba(255, 184, 0, 0.3);
+  }
+
+  .btn-gradient-amber:hover {
+    box-shadow: 0 6px 20px rgba(255, 184, 0, 0.5);
+    transform: translateY(-2px);
+  }
+
+  .btn-gradient-amber:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(255, 184, 0, 0.3);
+  }
+
+  /* Custom Button with Amber Border */
+  .btn-border-amber {
+    @apply inline-block border border-amber-500/60 bg-transparent hover:bg-amber-500/5 px-8 py-3 text-white font-semibold rounded-sm whitespace-nowrap transition-all duration-200;
+  }
+
+  .btn-border-amber:hover {
+    border-color: rgb(251 191 36 / 1); /* amber-400 */
+  }
+
+  /* Hide Scrollbar */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
